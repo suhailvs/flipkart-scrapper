@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block extracss %}
+{% endblock %}
+
+
+{% block content %}
+<h2>Products</h2>
+<div class="row">
+{% for product in products %}
+
+    <div class="col-md-3">
+  
+<div class="card">
+    <img src="{{product.image}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{product.title}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Stars: {{product.star}}</li>
+      <li class="list-group-item">{{product.ratings}}</li>
+      <li class="list-group-item">{{product.camera}}</li>
+      <li class="list-group-item">{{product.display}}</li>
+      <li class="list-group-item">{{product.processor}}</li>
+      <li class="list-group-item">{{product.ram}}</li>
+      <li class="list-group-item">{{product.battery}}</li>
+      <li class="list-group-item">{{product.warranty}}</li>
+    </ul>
+    <div class="card-body">
+      <a href="https://flipkar.com{{product.link}}" class="card-link">More details</a>
+      
+    </div>
+  </div>
+</div>
+
+  {% endfor %}
+</div>
+{% endblock %}

@@ -3,7 +3,7 @@
 scrap from website:
 
 ```
-from scrap import Flipkart
+from myapp.scrap import Flipkart
 scrapper = Flipkart()
 scrapper.get('mobiles')
 ```
@@ -11,7 +11,7 @@ scrapper.get('mobiles')
 parse the scrapped html:
 
 ```
-from parse import Parse
+from myapp.parse import Parse
 p = Parse()
 p.run()
 ```
