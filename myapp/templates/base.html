@@ -8,11 +8,12 @@
     <meta name="author" content="suhail vs">
     
     <meta name="domain" content="stackschools.com"/>
-    <title>{% block title %}{% endblock %} - Stack Schools</title>
+    <title>{% block title %}{% endblock %} - E-commerce</title>
     <link rel="icon" href="{% static 'img/favicon.png' %}">
     
       <!-- Bootstrap core CSS -->
-      <link rel="stylesheet" href="{% static 'bootstrap5/bootstrap.css' %}">
+      {% comment %} <link rel="stylesheet" href="{% static 'bootstrap5/bootstrap.css' %}"> {% endcomment %}
+      <link rel="stylesheet" href="{% static 'theme.min.css' %}">
     {% block extracss %}{% endblock %}
   </head>
 

@@ -4,36 +4,77 @@
 {% block extracss %}
 {% endblock %}
 
-
 {% block content %}
 <h2>Products</h2>
-<div class="row">
-{% for product in products %}
-
-    <div class="col-md-3">
-  
-<div class="card">
-    <img src="{{product.image}}" class="card-img-top" alt="...">
+<div class="row g-4 row-cols-1 mt-2">
+  {% for product in page_obj %}
+  <div class="col">
+  <div class="card card-product">
     <div class="card-body">
-      <h5 class="card-title">{{product.title}}</h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Stars: {{product.star}}</li>
-      <li class="list-group-item">{{product.ratings}}</li>
-      <li class="list-group-item">{{product.camera}}</li>
-      <li class="list-group-item">{{product.display}}</li>
-      <li class="list-group-item">{{product.processor}}</li>
-      <li class="list-group-item">{{product.ram}}</li>
-      <li class="list-group-item">{{product.battery}}</li>
-      <li class="list-group-item">{{product.warranty}}</li>
-    </ul>
-    <div class="card-body">
-      <a href="https://flipkar.com{{product.link}}" class="card-link">More details</a>
-      
+       <div class="row align-items-center">
+          <div class="col-md-3 col-6">
+             <div class="text-center position-relative">
+                <a href="shop-single.html">
+                   <!-- img -->
+                   <img src="{% static 'img/'|add:product.pid|add:'.jpeg' %}{# product.image #}" alt="Grocery Ecommerce Template" class="mb-3 img-fluid">
+                </a>
+             </div>
+          </div>
+          <div class="col-md-3 col-6 flex-grow-1">
+             <!-- heading -->
+             <div class="text-small mb-1">
+              <h2 class="display-6">{{product.price}}</h2>
+                {% comment %} <a href="#!" class="text-decoration-none text-muted"><small>{{product.price}}</small></a> {% endcomment %}
+             </div>
+             <h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">{{product.title}}</a></h2>
+             <div>
+               <span class="badge bg-success">Star: {{product.star}}</span>
+               {{product.ratings}}
+             </div>
+             <div class="mt-2">
+               <ul>
+                  {% for key, values in product.details.items %}
+                  <li>{{values}}</li>
+                  {% endfor %}
+                  
+                </ul>
+                <div class="mt-2">
+                   <a href="https://flipkart.com{{product.link}}" class="btn btn-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag me-2">
+                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                         <line x1="3" y1="6" x2="21" y2="6"></line>
+                         <path d="M16 10a4 4 0 0 1-8 0"></path>
+                      </svg>
+                      More Details
+                   </a>
+                </div>
+             </div>
+          </div>
+       </div>
     </div>
   </div>
-</div>
-
+  </div>
   {% endfor %}
 </div>
+
+<hr>
+<nav>
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+    </li>
+      {% endif %}
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</a>
+      </li>
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
+      </li>
+      {% endif %}
+  </ul>
+</nav>
+<br>
 {% endblock %}
+

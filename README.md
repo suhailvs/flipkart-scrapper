@@ -3,15 +3,24 @@
 scrap from website:
 
 ```
-from myapp.scrap import Flipkart
-scrapper = Flipkart()
+# for refrigerator,monitors, television, ac, mobiles, laptop
+$ mkdir htmlfiles
+$ python
+from scrap import Flipkart
+scrapper = Flipkart() 
 scrapper.get('mobiles')
+
+# for trimmers, speakers, earphone
+$ mkdir htmlfiles2
+$ python
+from scrap import Flipkart
+scrapper = Flipkart('htmlfiles2')
+scrapper.get('trimmers')
 ```
 
-parse the scrapped html:
+parse the scrapped html(refrigerator,monitors, television, ac, mobiles, laptop):
 
 ```
-from myapp.parse import Parse
-p = Parse()
-p.run()
+./manange.py runserver
+got to -> http://localhost:8000/p/
 ```
