@@ -10,7 +10,7 @@ from scrap import Flipkart
 scrapper = Flipkart() 
 scrapper.get('mobiles')
 
-# for trimmers, speakers, earphone
+# for trimmers, speakers, earphone,beds
 $ mkdir htmlfiles2
 $ python
 from scrap import Flipkart
