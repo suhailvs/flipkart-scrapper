@@ -22,7 +22,7 @@
           <br>
           <label>Star:</label>
           <select class="form-control" name="star">
-            <option value="-" selected>Select an option</option>
+            <option value="" selected>Select/clear an option</option>
             {% for star in stars %}
             <option value="{{star.star}}"{% if request.GET.star == star.star %} selected{% endif %}>Star: {{star.star}}({{star.c}})</option>
             {% endfor %}
@@ -30,7 +30,7 @@
 
           <label>Categories:</label>
           <select class="form-control" name="category">
-            <option value="-" selected>Select an option</option>
+            <option value="" selected>Select/clear an option</option>
             {% for cat in categories %}
             <option value="{{cat.category}}"{% if request.GET.star == star.star %} selected{% endif %}>{{cat.category}}({{cat.c}})</option>
             {% endfor %}
