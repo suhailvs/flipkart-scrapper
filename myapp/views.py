@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from myapp.parse import Parse
+from myapp.parse import Parse,Parse2
 from myapp.models import Product
 from pathlib import Path
 from django.core.paginator import Paginator
@@ -27,11 +27,19 @@ def products(request):
 
 
 
-def parse_products(request):
-    dname='htmlfiles'
+def parse_products(request,f):
+    if f == 1:
+        dname='htmlfiles'
+    elif f == 2:
+        dname='htmlfiles2'
+    else:
+        return HttpResponse('must be 1 or 2')
     directory = Path(dname)
     files = [f.name for f in directory.iterdir() if f.is_file()]
     for fname in files:
-        p = Parse(fname=f'{dname}/{fname}',my_model=Product)
+        if f == 1:
+            p = Parse(fname=f'{dname}/{fname}',my_model=Product)
+        else:
+            p = Parse2(fname=f'{dname}/{fname}',my_model=Product)
         p.run()
     return HttpResponse('success')

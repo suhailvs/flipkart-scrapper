@@ -23,11 +23,12 @@ class Flipkart:
         self.driver.get(f'{self.url}/search?q={q}&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off')
         # https://stackoverflow.com/a/16928204/2351696
         page = 1
+        category = q.replace(' ','')
         while True:
             next_page = input("Press Enter after Next page click. Press 1 to quit:")
-            if next_page=='1': break
-        
-            self.create_html(page, q)
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+            if next_page=='1': break        
+            self.create_html(page, category)
             page+=1
         
         self.driver.quit()
