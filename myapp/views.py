@@ -7,6 +7,9 @@ from django.core.paginator import Paginator
 # Create your views here.
 def products(request):
     qs = Product.objects.all()
+    q = request.GET.get("q")
+    if q:        
+        qs = qs.filter(title__icontains=q)
     star = request.GET.get("star")
     if star:        
         qs = qs.filter(star=star)

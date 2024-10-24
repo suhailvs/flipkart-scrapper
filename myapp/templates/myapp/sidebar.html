@@ -11,11 +11,25 @@
       <div class="mb-8">
         <h5 class="mb-3">Search</h5>
         <div class="my-4">
+          <form method="get" action=".">
           <input
             placeholder="Search by product name"
-            class="form-control"
-            type="search"
+            class="form-control" name="q"
+            type="search" value="{{request.GET.q}}"
           />
+          <br>
+          <label>Star:</label>
+          <select class="form-control" name="star">
+            <option{% if request.GET.star == "4.9" %} selected{% endif %}>4.9</option>
+            <option{% if request.GET.star == "4.8" %} selected{% endif %}>4.8</option>
+            <option{% if request.GET.star == "4.7" %} selected{% endif %}>4.7</option>
+            <option{% if request.GET.star == "4.6" %} selected{% endif %}>4.6</option>
+            <option{% if request.GET.star == "4.5" %} selected{% endif %}>4.5</option>
+            <option{% if request.GET.star == "4.4" %} selected{% endif %}>4.4</option>
+            <option{% if request.GET.star == "4.3" %} selected{% endif %}>4.3</option>
+            <option{% if request.GET.star == "4.2" %} selected{% endif %}>4.2</option>
+          </select>
+        </form>
         </div>
       </div>
     </div>
