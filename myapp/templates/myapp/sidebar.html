@@ -7,19 +7,18 @@
     id="offcanvasCategory">
     <div class="d-lg-none offcanvas-header">
       <div class="offcanvas-title h5" id="offcanvasCategoryLabel">Filter</div>
-      <button type="button" class="btn-close" aria-label="Close"></button>
     </div>
     <div class="ps-lg-2 pt-lg-0 d-flex flex-column offcanvas-body">
       <div class="mb-8">
-        <h5 class="mb-3">Search</h5>
-        <div class="my-4">
+        <div class="m-4">
           <form method="get" action=".">
+            <br>
+            <label>Search:</label>
           <input
             placeholder="Search by product name"
             class="form-control" name="q"
             type="search" value="{{request.GET.q}}"
           />
-          <br>
           <label>Star:</label>
           <select class="form-control" name="star">
             <option value="" selected>Select/clear an option</option>
@@ -35,6 +34,7 @@
             <option value="{{cat.category}}"{% if request.GET.category == cat.category %} selected{% endif %}>{{cat.category}}({{cat.c}})</option>
             {% endfor %}
           </select>
+          <br>
           <button type="submit" class="btn btn-primary">Search</button>
 
         </form>
