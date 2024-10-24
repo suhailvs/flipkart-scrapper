@@ -22,5 +22,5 @@ parse the scrapped html(refrigerator,monitors, television, ac, mobiles, laptop):
 
 ```
 ./manange.py runserver
-got to -> http://localhost:8000/p/
+for parse got to -> http://localhost:8000/p/1/
 ```

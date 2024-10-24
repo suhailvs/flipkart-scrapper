@@ -9,7 +9,7 @@ class Product(models.Model):
     price = models.CharField(max_length=200)
     image = models.CharField(max_length=200)
     star = models.CharField(max_length=200)
-    
+    stock = models.BooleanField(default=True)
     ratings = models.CharField(max_length=200)
     link = models.TextField()
 
