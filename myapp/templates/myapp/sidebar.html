@@ -20,15 +20,21 @@
           <br>
           <label>Star:</label>
           <select class="form-control" name="star">
-            <option{% if request.GET.star == "4.9" %} selected{% endif %}>4.9</option>
-            <option{% if request.GET.star == "4.8" %} selected{% endif %}>4.8</option>
-            <option{% if request.GET.star == "4.7" %} selected{% endif %}>4.7</option>
-            <option{% if request.GET.star == "4.6" %} selected{% endif %}>4.6</option>
-            <option{% if request.GET.star == "4.5" %} selected{% endif %}>4.5</option>
-            <option{% if request.GET.star == "4.4" %} selected{% endif %}>4.4</option>
-            <option{% if request.GET.star == "4.3" %} selected{% endif %}>4.3</option>
-            <option{% if request.GET.star == "4.2" %} selected{% endif %}>4.2</option>
+            <option value="-" selected>Select an option</option>
+            {% for star in stars %}
+            <option value="{{star.star}}"{% if request.GET.star == star.star %} selected{% endif %}>Star: {{star.star}}({{star.c}})</option>
+            {% endfor %}
           </select>
+
+          <label>Categories:</label>
+          <select class="form-control" name="category">
+            <option value="-" selected>Select an option</option>
+            {% for cat in categories %}
+            <option value="{{cat.category}}"{% if request.GET.star == star.star %} selected{% endif %}>{{cat.category}}({{cat.c}})</option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="btn btn-primary">Search</button>
+
         </form>
         </div>
       </div>

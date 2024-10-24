@@ -4,19 +4,26 @@ from myapp.parse import Parse
 from myapp.models import Product
 from pathlib import Path
 from django.core.paginator import Paginator
+from django.db.models import Count
 # Create your views here.
 def products(request):
     qs = Product.objects.all()
     q = request.GET.get("q")
-    if q:        
-        qs = qs.filter(title__icontains=q)
     star = request.GET.get("star")
-    if star:        
-        qs = qs.filter(star=star)
+    c = request.GET.get('category')
+    if q: qs = qs.filter(title__icontains=q)    
+    if star: qs = qs.filter(star=star)
+    if c: qs = qs.filter(category=c)
+    
     paginator = Paginator(qs, 25)  # Show 25 contacts per page.
     page_number = request.GET.get("page")    
     page_obj = paginator.get_page(page_number)
-    return render(request, 'myapp/products.html', {"page_obj": page_obj})
+
+    return render(request, 'myapp/products.html', {
+        "page_obj": page_obj,
+        "categories":qs.values('category').annotate(c=Count('id')),
+        "stars":qs.values('star').annotate(c=Count('id')),
+    })
 
 
 

@@ -8,7 +8,7 @@
 <div class="gx-10 row">
    {%include "myapp/sidebar.html" %}
    <section class="col-lg-9 col-md-12">
-<h2>Products</h2>
+<h2>Products({{ page_obj.paginator.count }})</h2>
 <div class="row g-4 row-cols-1 mt-2">
   {% for product in page_obj %}
   <div class="col">
