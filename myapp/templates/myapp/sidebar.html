@@ -32,7 +32,7 @@
           <select class="form-control" name="category">
             <option value="" selected>Select/clear an option</option>
             {% for cat in categories %}
-            <option value="{{cat.category}}"{% if request.GET.star == star.star %} selected{% endif %}>{{cat.category}}({{cat.c}})</option>
+            <option value="{{cat.category}}"{% if request.GET.category == cat.category %} selected{% endif %}>{{cat.category}}({{cat.c}})</option>
             {% endfor %}
           </select>
           <button type="submit" class="btn btn-primary">Search</button>
