@@ -11,7 +11,7 @@
     <div class="ps-lg-2 pt-lg-0 d-flex flex-column offcanvas-body">
       <div class="mb-8">
         <div class="m-4">
-          <form method="get" action=".">
+          <form method="get" action="." id="myForm">
             <br>
             <label>Search:</label>
           <input
@@ -22,6 +22,7 @@
           <label>Star:</label>
           <select class="form-control" name="star">
             <option value="" selected>Select/clear an option</option>
+            <option value="4p"{% if request.GET.star == '4p' %} selected{% endif %}>Star: 4+</option>
             {% for star in stars %}
             <option value="{{star.star}}"{% if request.GET.star == star.star %} selected{% endif %}>Star: {{star.star}}({{star.c}})</option>
             {% endfor %}
@@ -36,10 +37,17 @@
           </select>
           <br>
           <button type="submit" class="btn btn-primary">Search</button>
-
+          <button class="btn btn-warning" type="button" onclick="clearForm()">Clear</button>
         </form>
         </div>
       </div>
     </div>
   </div>
 </aside>
+<script>
+  function clearForm() {
+    $("#myForm select").val("").change();
+    $("#myForm input").val("");
+    $("#myForm").submit();    
+  }
+</script>

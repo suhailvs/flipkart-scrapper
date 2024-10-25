@@ -12,7 +12,11 @@ def products(request):
     star = request.GET.get("star")
     c = request.GET.get('category')
     if q: qs = qs.filter(title__icontains=q)    
-    if star: qs = qs.filter(star=star)
+    if star: 
+        if star == '4p':
+            qs = qs.filter(star__in=[f'4.{i}' for i in range(1,10)])
+        else:
+            qs = qs.filter(star=star)
     if c: qs = qs.filter(category=c)
     
     paginator = Paginator(qs, 25)  # Show 25 contacts per page.
